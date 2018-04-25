@@ -1,0 +1,29 @@
+{
+  "name": "verification-tool",
+  "version": "1.0.0",
+  "description": "verification tool",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joemulick/verification-tool.git"
+  },
+  "author": "Joe Mulick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joemulick/verification-tool/issues"
+  },
+  "homepage": "https://github.com/joemulick/verification-tool#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.16",
+    "validator": "^9.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
