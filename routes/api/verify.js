@@ -29,7 +29,6 @@ router.get('/test', (req, res) => res.json({msg: "User Works"
 // @route   GET api/verify/checkVerify
 // @desc    Tests verify route
 // @access  Public
-
 router.post('/checkVerify', (req, res) => {
     const code = req.body.code;
     const company = req.body.password;
