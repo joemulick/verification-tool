@@ -1,5 +1,5 @@
 {
-  "name": "verification-tool",
+  "name": "tech-net",
   "version": "1.0.0",
   "description": "verification tool",
   "main": "server.js",
@@ -9,18 +9,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joemulick/verification-tool.git"
+    "url": "git+https://github.com/joemulick/tech-net.git"
   },
   "author": "Joe Mulick",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joemulick/verification-tool/issues"
+    "url": "https://github.com/joemulick/tech-net/issues"
   },
-  "homepage": "https://github.com/joemulick/verification-tool#readme",
+  "homepage": "https://github.com/joemulick/tech-net#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "mongoose": "^5.0.16",
+    "gravatar": "^1.6.0",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.0.14",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "validator": "^9.4.1"
   },
   "devDependencies": {

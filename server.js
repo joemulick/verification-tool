@@ -1,9 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+
 
 // Bring in verify from '/routes/api/users' file
 const verify = require('./routes/api/verify');
+const adminLogin = require('./routes/api/adminLogin');
 
 // Initial express app
 const app = express();
@@ -21,13 +24,18 @@ mongoose
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
-app.get('/', (req, res) => res.send('Hello World'));
 
-// Use Verify
-app.use('/api/verify', verify);
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport')(passport);
+
+// Use Routes
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/posts', posts);
 
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
-
-
