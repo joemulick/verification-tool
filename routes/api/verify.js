@@ -31,7 +31,7 @@ router.get('/test', (req, res) => res.json({msg: "User Works"
 // @access  Public
 router.post('/checkVerify', (req, res) => {
     const code = req.body.code;
-    const company = req.body.password;
+    // const company = req.body.password;
 
     // Find code in database
     Verify.findOne({code})
@@ -41,7 +41,7 @@ router.post('/checkVerify', (req, res) => {
                 return res.status(404).json({code: 'This code does not exist, please try again.'})
             } 
 
-            // Check
+            return 'Code Valid'
         })
 });
 
