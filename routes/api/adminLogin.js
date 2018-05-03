@@ -7,11 +7,11 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load Input Validation
-const ValidateRegisterInput = require('../../validation/register');
+// const ValidateCodeInput = require('../../validation/codeVerify');
 const ValidateLoginInput = require('../../validation/login');
 
-// Load User model
-const User = require('../../models/Verify');
+// Load Verify model
+const Admin = require('../../models/Admin');
 
 // @route GET api/users/login
 // @desc Admin / Returning JWT Token

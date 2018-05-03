@@ -5,7 +5,7 @@ const passport = require('passport');
 
 
 // Bring in verify from '/routes/api/users' file
-const verify = require('./routes/api/verify');
+const code = require('./routes/api/code');
 const adminLogin = require('./routes/api/adminLogin');
 
 // Initial express app
@@ -32,9 +32,8 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // Use Routes
-app.use('/api/users', users);
-app.use('/api/profile', profile);
-app.use('/api/posts', posts);
+app.use('/api/adminLogin', adminLogin);
+app.use('/api/code', code);
 
 const port = process.env.PORT || 5000;
 
