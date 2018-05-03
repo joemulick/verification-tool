@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Load Input Validation
+const ValidateCodeInput = require('../../validation/codeVerify');
+
 const Code = require('../../models/Code');
 
 // @route GET api/verify/code

@@ -7,13 +7,12 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load Input Validation
-// const ValidateCodeInput = require('../../validation/codeVerify');
 const ValidateLoginInput = require('../../validation/login');
 
 // Load Verify model
 const Admin = require('../../models/Admin');
 
-// @route GET api/users/login
+// @route GET api/admin/login
 // @desc Admin / Returning JWT Token
 // @access Public
 router.post('/login', (req, res) => {
@@ -29,7 +28,7 @@ router.post('/login', (req, res) => {
     const password = req.body.password;
 
     // Find the user by email
-    User.findOne({email: email})
+    Admin.findOne({email: email})
     .then(user => {
         //Check for user
         if(!user) {
