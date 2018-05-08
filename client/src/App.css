@@ -48,3 +48,16 @@ img {
 .Site-content {
   flex: 1;
 }
+
+/* Center Positioning CSS */
+
+.main-container {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  width: 380px;
+  height: 680px;
+  margin-left: -190px; /* Half the width of the container */
+  border: 1px solid black;
+  text-align: center;
+}

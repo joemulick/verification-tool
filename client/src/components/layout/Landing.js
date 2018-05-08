@@ -4,7 +4,7 @@ class Landing extends Component {
     render () {
         return (
             <div>
-                <p>Landing Page Content</p>
+                <div className="main-container">Landing Page Content</div>
             </div>
         )
     }
