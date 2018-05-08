@@ -8,9 +8,11 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App Site">
         <Navbar />
-        <h1>My React App</h1>
+        <div className="Site-content">
+        
+        </div>
         <Footer />
       </div>
     );
