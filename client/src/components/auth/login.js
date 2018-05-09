@@ -10,10 +10,22 @@ class Login extends Component {
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e) {
         this.setState({[e.target.name]: e.target.value});
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        const loginPreRedux = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        console.log(loginPreRedux);
     }
 
     render(){
@@ -24,7 +36,7 @@ class Login extends Component {
                         <div className="col-md-8 m-auto">
                             <h1 className="display-4 text-center">Log In</h1>
                             <p className="lead text-center">Log in access for gatheroloie admin only</p>
-                                <form action="dashboard.html">
+                                <form onSubmit={this.onSubmit}>
                                     <div className="form-group">
                                         <input 
                                             type="email" 
