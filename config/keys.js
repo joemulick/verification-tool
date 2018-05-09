@@ -1,4 +1,6 @@
-module.exports = {
-    mongoURI: 'mongodb://g-admin:Solarstar99*@ds257589.mlab.com:57589/vtool',
-    secretOrKey: 'pa$$word1!'
-};
+if (process.env.NODE_ENV === 'production') {
+    module.exports = require('./keys_prod');
+  } else {
+    module.exports = require('./keys_dev');
+  }
+  
