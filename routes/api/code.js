@@ -13,32 +13,6 @@ const ValidateCodeInput = require('../../validation/codeVerify');
 
 router.get('/test', (req, res) => res.json({ msg: 'code route works' }));
 
-// @route GET api/verify/code
-// @desc Check for Code in DB
-// @access Public
-// router.post('/codeVerify', (req, res) => {
-
-//     const { errors, isValid } = ValidateCodeInput(req.body);
-
-//     //Check Validation
-//     if(!isValid) {
-//         return res.status(400).json(errors);
-//     }
-
-//     const code = req.body.code;
-
-//     // Find the code in the db
-//     User.findOne({code})
-//     .then(code => {
-//         //Check for code
-//         if(!code) {
-//             errors.code = 'Sorry that is not a valid code';
-//             return res.status(404).json(errors)
-//         }
-
-//     });
-// });
-
 // @route   GET api/verify/checkVerify
 // @desc    Tests verify route
 // @access  Public
