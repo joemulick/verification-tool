@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
 
 class Login extends Component {
     constructor(){
@@ -21,21 +24,30 @@ class Login extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        const loginPreRedux = {
+        const newLogin = {
             email: this.state.email,
             password: this.state.password
         }
 
+        this.props.loginUser(newLogin);
+
         // axios.get('/api/adminLogin/login', admin)
         //     .then(res => console.log(res.data))
+        //     .catch(err => this.State({ errors err.respons.data }))
         
 
-        console.log(loginPreRedux);
+        console.log(newLogin);
     }
 
     render(){
+
+        const {errors} = this.state;
+
+        const { user } = this.props.auth;
+
         return (
             <div className="login">
+                {user ? user.name : null}
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
@@ -72,4 +84,13 @@ class Login extends Component {
     }
 }
 
-export default Login;
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    auth: state.auth
+})
+
+export default connect(mapStateToProps, { loginUser })(Login);
