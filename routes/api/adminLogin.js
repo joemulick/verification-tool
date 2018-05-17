@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// Unsure If I need bcrypt (im thinking not)
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
