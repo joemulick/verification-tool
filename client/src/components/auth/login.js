@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 
@@ -21,6 +20,12 @@ class Login extends Component {
         this.setState({[e.target.name]: e.target.value});
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors){
+            this.setState({errors: nextProps.errors})
+        }
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -30,10 +35,6 @@ class Login extends Component {
         }
 
         this.props.loginUser(newLogin);
-
-        // axios.get('/api/adminLogin/login', admin)
-        //     .then(res => console.log(res.data))
-        //     .catch(err => this.State({ errors err.respons.data }))
         
 
         console.log(newLogin);
@@ -43,11 +44,8 @@ class Login extends Component {
 
         const {errors} = this.state;
 
-        const { user } = this.props.auth;
-
         return (
             <div className="login">
-                {user ? user.name : null}
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
@@ -86,11 +84,13 @@ class Login extends Component {
 
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    auth: state.auth
+    auth: state.auth,
+    errors: state.errors
 })
 
 export default connect(mapStateToProps, { loginUser })(Login);

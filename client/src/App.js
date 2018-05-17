@@ -7,7 +7,7 @@ import store from './store';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';
-import Login from './components/auth/login';
+import Login from './components/auth/Login';
 
 import './App.css';
 
