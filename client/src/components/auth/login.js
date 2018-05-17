@@ -26,8 +26,8 @@ class Login extends Component {
             password: this.state.password
         }
 
-        axios.get('/api/adminLogin/login', newUser)
-            .then(res => console.log(res.data))
+        // axios.get('/api/adminLogin/login', admin)
+        //     .then(res => console.log(res.data))
         
 
         console.log(loginPreRedux);
