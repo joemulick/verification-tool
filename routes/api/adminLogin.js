@@ -8,17 +8,17 @@ const passport = require('passport');
 // Load Input Validation
 const validateLoginInput = require('../../validation/login');
 
-// Load User model
+// Load Admin model
 const Admin = require('../../models/Admin');
 
-// @route   GET api/users/test
-// @desc    Tests users route
+// @route   GET api/adminLogin/test
+// @desc    Tests adminLogin route
 // @access  Public
-router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
+router.get('/test', (req, res) => res.json({ msg: 'adminLogin Works' }));
 
 
-// @route   GET api/users/login
-// @desc    Login User / Returning JWT Token
+// @route   GET api/adminLogin/login
+// @desc    Login admins / Returning JWT Token
 // @access  Public
 router.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
@@ -31,19 +31,19 @@ router.post('/login', (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  // Find user by email
-  User.findOne({ email }).then(user => {
-    // Check for user
-    if (!user) {
-      errors.email = 'User not found';
+  // Find admins by email
+  Admin.findOne({ email }).then(admin => {
+    // Check for admins
+    if (!admin) {
+      errors.email = 'Admin not found';
       return res.status(404).json(errors);
     }
 
     // Check Password
-    bcrypt.compare(password, user.password).then(isMatch => {
+    bcrypt.compare(password,admin.password).then(isMatch => {
       if (isMatch) {
-        // User Matched
-        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
+        // admin Matched
+        const payload = { name: admin.name, userRights: admin.userRights }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
@@ -65,17 +65,17 @@ router.post('/login', (req, res) => {
   });
 });
 
-// @route   GET api/users/current
-// @desc    Return current user
+// @route   GET api/adminLogin/current
+// @desc    Return current admin
 // @access  Private
 router.get(
   '/current',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     res.json({
-      id: req.user.id,
-      name: req.user.name,
-      email: req.user.email
+      id: req.admin.id,
+      name: req.admin.name,
+      email: req.admin.email
     });
   }
 );
