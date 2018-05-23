@@ -42,7 +42,7 @@ router.post('/login', (req, res) => {
     // Check Password
     Admin.findOne({ password }).then(admin => {
 
-      if (password) {
+      if (admin) {
         // admin Matched
         const payload = { id: admin.id, name: admin.name, userRights: admin.userRights }; // Create JWT Payload
 
