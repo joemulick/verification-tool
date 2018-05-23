@@ -44,7 +44,7 @@ router.post('/login', (req, res) => {
 
       if (admin) {
         // admin Matched
-        const payload = { id: admin.id, name: admin.name, userRights: admin.userRights }; // Create JWT Payload
+        const payload = { id: admin.id, name: admin.name, email: admin.email, userRights: admin.userRights }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
@@ -76,7 +76,8 @@ router.get(
     res.json({
       id: req.admin.id,
       name: req.admin.name,
-      email: req.admin.email
+      email: req.admin.email,
+      userRights: req.admin.userRights
     });
   }
 );

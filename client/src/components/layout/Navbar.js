@@ -1,8 +1,35 @@
 import React, { Component } from 'react';
 import {Image} from 'cloudinary-react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {logoutUser} from '../../actions/authActions'
 
 class Navbar extends Component {
+
+    onLogoutClick(e){
+      e.preventDefault();
+      this.props.logoutUser();
+    }
+
     render(){
+      const { isAuthenticated, user } = this.props.auth;
+
+      const authLinks = (
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+              <a href='#' onClick={this.onLogoutClick.bind(this)} className="nav-link"><p className="nav-text">Logout</p></a>
+          </li>
+        </ul>
+      )
+
+      const guestLinks = (
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <a className="nav-link" href="https://www.gatherologie.com/"><p className="nav-text">Back to gatherologie</p></a>
+          </li>
+        </ul>
+      )
+
         return (
             <nav className="navbar navbar-expand-sm mb-4">
               <div className="container">
@@ -12,15 +39,21 @@ class Navbar extends Component {
                 </Image>
                 </a>
                 
-                  <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                      <a className="nav-link" href="https://www.gatherologie.com/"><p className="nav-text">Back to gatherologie</p></a>
-                    </li>
-                  </ul>
+                { isAuthenticated ? authLinks : guestLinks }  
+
               </div>
             </nav>
         )
     }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, { logoutUser }) (Navbar);
