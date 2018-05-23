@@ -40,10 +40,11 @@ router.post('/login', (req, res) => {
     }
 
     // Check Password
-    bcrypt.compare(password,admin.password).then(isMatch => {
-      if (isMatch) {
+    Admin.findOne({ password }).then(admin => {
+
+      if (password) {
         // admin Matched
-        const payload = { name: admin.name, userRights: admin.userRights }; // Create JWT Payload
+        const payload = { id: admin.id, name: admin.name, userRights: admin.userRights }; // Create JWT Payload
 
         // Sign Token
         jwt.sign(
