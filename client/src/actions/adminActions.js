@@ -1,27 +1,28 @@
 import axios from 'axios';
-import { GET_PROFILE, PROFILE_LOADING, GET_ERRORS } from './types';
+import { GET_CODE, CODE_LOADING, GET_ERRORS } from './types';
 
-// Get current profile
-export const getCurrentProfile = () => dispatch => {
-    dispatch(setProfileLoading());
-    axios.get('./api/profile')
+// Get current code
+export const getCurrentCode = () => dispatch => {
+    dispatch(setCodeLoading());
+    axios.get('./api/code')
         .then(res =>
             dispatch({
-                type: GET_PROFILE,
+                type: GET_CODE,
                 payload: res.data
             })
         )
         .catch(err =>
             dispatch({
-                type: GET_PROFILE,
+                type: GET_CODE,
                 payload: {}   
+            })
         );
 }
 
-// Profile Loading
+// code Loading
 
-export const setProfileLoading = () => {
+export const setCodeLoading = () => {
     return {
-        type: PROFILE_LOADING
+        type: CODE_LOADING
     }
 }
