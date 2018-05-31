@@ -1,22 +1,22 @@
-import { GET_PROFILE, PROFILE_LOADING } from  '../actions/types'
+import { GET_CODE, CODE_LOADING } from  '../actions/types'
 
 const initialState = {
-    profile: null,
-    profiles: null,
+    code: null,
+    codes: null,
     loading: false
 }
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case PROFILE_LOADING:
+        case CODE_LOADING:
             return {
                 ...state,
                 loading: true
             }
-        case GET_PROFILE:
+        case GET_CODE:
             return {
                 ...state,
-                profile: action.payload,
+                code: action.payload,
                 loading: false
             }
         default:
