@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Image} from 'cloudinary-react';
+import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {logoutUser} from '../../actions/authActions'
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/authActions'
 import { clearCurrentCode } from '../../actions/codeActions';
 
 class Navbar extends Component {
