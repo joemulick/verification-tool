@@ -1,4 +1,4 @@
-import { GET_CODE, CODE_LOADING } from  '../actions/types'
+import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE } from  '../actions/types'
 
 const initialState = {
     code: null,
@@ -18,6 +18,11 @@ export default function (state = initialState, action) {
                 ...state,
                 code: action.payload,
                 loading: false
+            }
+        case CLEAR_CURRENT_CODE:
+            return {
+                ...state,
+                profile: null
             }
         default:
             return state;

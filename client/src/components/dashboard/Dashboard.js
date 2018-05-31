@@ -5,7 +5,7 @@ import { getCurrentCode } from '../../actions/codeActions';
 
 class Dashboard extends Component {
     componentDidMount(){
-        this.props.getCurrentProfile();
+        this.props.getCurrentCode();
     }
 
 

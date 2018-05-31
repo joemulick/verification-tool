@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CODE, CODE_LOADING, GET_ERRORS } from './types';
+import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE } from './types';
 
 // Get current code
 export const getCurrentCode = () => dispatch => {
@@ -24,5 +24,13 @@ export const getCurrentCode = () => dispatch => {
 export const setCodeLoading = () => {
     return {
         type: CODE_LOADING
+    }
+}
+
+// clar code
+
+export const clearCurrentCode = () => {
+    return {
+        type: CLEAR_CURRENT_CODE
     }
 }
