@@ -11,7 +11,7 @@ class Dashboard extends Component {
 
   render() {
 
-    const { user } = this.props.auth;
+    // const { user } = this.props.auth;
     const { code, loading } = this.props.code;
 
     let dashboardContent;
@@ -37,7 +37,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.PropTypes = {
+Dashboard.propTypes = {
   getCurrentCode: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   code: PropTypes.object.isRequired
@@ -48,4 +48,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(null, { getCurrentCode }) (Dashboard);
+export default connect(mapStateToProps, { getCurrentCode }) (Dashboard);
