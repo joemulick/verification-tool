@@ -34,6 +34,9 @@ class CreateCode extends Component {
             <div className="create-profile">
                 <div className="container">
                     <div className="row">
+                        <div className="col-md-8 m-auto">
+
+
                         <h1 className="display-4 text-center">
                             Code Manager
                         </h1>
@@ -46,6 +49,9 @@ class CreateCode extends Component {
                                 code="* Profile Handle"
                             />
                         </form>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
