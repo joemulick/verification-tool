@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
+import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+// import InputGroup from '../common/InputGroup';
+// import SelectListGroup from '../common/SelectListGroup';
+
 
 class CreateCode extends Component {
     constructor(props){
@@ -11,7 +15,20 @@ class CreateCode extends Component {
             code: '',
             errors: {}
         }
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
+
+    onSubmit(e){
+        e.preventDeault();
+        console.log('submit');
+    }
+
+    onChange(e) {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
     render() {
         return (
             <div className="create-profile">
@@ -24,6 +41,11 @@ class CreateCode extends Component {
                             Edit your codes
                         </p>
                         <small className="d-block pb-3">* = required fields</small>
+                        <form onSubmit={this.onSubmit}>
+                            <TextFieldGroup
+                                code="* Profile Handle"
+                            />
+                        </form>
                     </div>
                 </div>
             </div>
@@ -32,7 +54,7 @@ class CreateCode extends Component {
 }
 
 CreateCode.propTypes = {
-    code: PropTypes.object.isRequired,
+    code: PropTypes.string.isRequired,
     errors: PropTypes.object.isRequired
 }
 
