@@ -15,7 +15,6 @@ class CreateCode extends Component {
             code: '',
             errors: {}
         }
-
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -35,22 +34,15 @@ class CreateCode extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-
-
                         <h1 className="display-4 text-center">
                             Code Manager
                         </h1>
-                        <p>
-                            Edit your codes
-                        </p>
                         <small className="d-block pb-3">* = required fields</small>
                         <form onSubmit={this.onSubmit}>
                             <TextFieldGroup
                                 code="* Profile Handle"
                             />
                         </form>
-
-
                         </div>
                     </div>
                 </div>
