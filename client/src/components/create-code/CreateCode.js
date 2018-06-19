@@ -40,7 +40,7 @@ class CreateCode extends Component {
                         <small className="d-block pb-3">* = required fields</small>
                         <form onSubmit={this.onSubmit}>
                             <TextFieldGroup
-                                code="* Profile Handle"
+                                code="code"
                             />
                         </form>
                         </div>
