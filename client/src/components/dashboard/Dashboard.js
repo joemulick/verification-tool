@@ -18,21 +18,30 @@ class Dashboard extends Component {
 
     let dashboardContent;
 
+    if (code === null || loading) {
+      dashboardContent = <Spinner />;
+    } else {
+      // Check if codes exist
+      if (Object.keys(code).length > 0) {
+        dashboardContent = <h4>No Codes To Display</h4>;
+      } else {
         dashboardContent = (
           <div>
-            <p>You have not yet setup a profile, please add some info</p>
-            <Link to="/create-code" className="btn btn-lg btn-info">
-              Create Profile
-            </Link>
+            <p className="text-center">Add More Codes</p>
+            {/* <Link to="/create-code" className="btn btn-lg btn-info">
+              Code
+            </Link> */}
           </div>
         );
+      }
+    }
 
     return (
       <div className="dashboard">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
+              <h1 className="display-4 text-center">Dashboard</h1>
                 {dashboardContent}
             </div>
           </div>
