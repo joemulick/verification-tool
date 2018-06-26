@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentCode } from '../../actions/codeActions';
@@ -17,11 +18,14 @@ class Dashboard extends Component {
 
     let dashboardContent;
 
-    if(code === null || loading) {
-        dashboardContent = <Spinner>Loading...</Spinner>
-    } else {
-        dashboardContent = <h1>Hello a</h1>
-    }
+        dashboardContent = (
+          <div>
+            <p>You have not yet setup a profile, please add some info</p>
+            <Link to="/create-code" className="btn btn-lg btn-info">
+              Create Profile
+            </Link>
+          </div>
+        );
 
     return (
       <div className="dashboard">
@@ -35,7 +39,8 @@ class Dashboard extends Component {
         </div>
       </div>
     )
-  }
+}
+
 }
 
 Dashboard.propTypes = {

@@ -3,13 +3,19 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
-// import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-// import InputGroup from '../common/InputGroup';
-// import SelectListGroup from '../common/SelectListGroup';
+import { Link } from 'react-router-dom';
+// import { getCurrentCode } from '../../actions/codeActions';
+import Spinner from '../common/Spinner';
 import { createCode } from '../../actions/codeActions';
 
 
+
 class CreateCode extends Component {
+
+    componentDidMount() {
+        this.props.getCurrentCode();
+      }
+
     constructor(props){
         super(props);
         this.state = {
@@ -42,6 +48,24 @@ class CreateCode extends Component {
     }
 
     render() {
+        
+        const { admin } = this.props.auth;
+        const { code, loading } = this.props.profile;
+
+        let dashboardContent;
+
+              dashboardContent = (
+                <div>
+                  <p className="lead text-muted">Welcome {admin.name}</p>
+                  <p>You have not yet setup a profile, please add some info</p>
+                  <Link to="/create-code" className="btn btn-lg btn-info">
+                    Create Profile
+                  </Link>
+                </div>
+              );
+
+
+
         return (
             <div className="create-profile">
                 <div className="container">
