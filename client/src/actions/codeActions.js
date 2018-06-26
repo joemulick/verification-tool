@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE } from './types';
+import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE, GET_ERRORS } from './types';
 
 // Get current code
 export const getCurrentCode = () => dispatch => {
@@ -19,20 +19,26 @@ export const getCurrentCode = () => dispatch => {
         );
 }
 
-// Create Profile
-
-// export const createCode = (profileData, history)
+// Create Code
+export const createCode = (codeData, history) => dispatch => {
+    axios   
+        .post('/api/code', codeData)
+        .then(res => history.push('/dashboard'))
+        .catch(err =>
+        dispatch({
+            type: GET_ERRORS,
+            payload: err.response.data
+        }))
+}
 
 // code Loading
-
 export const setCodeLoading = () => {
     return {
         type: CODE_LOADING
     }
 }
 
-// clar code
-
+// claer code
 export const clearCurrentCode = () => {
     return {
         type: CLEAR_CURRENT_CODE

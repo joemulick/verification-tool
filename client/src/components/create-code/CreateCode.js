@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
-import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+// import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 // import InputGroup from '../common/InputGroup';
 // import SelectListGroup from '../common/SelectListGroup';
+import { createCode } from '../../actions/codeActions';
 
 
 class CreateCode extends Component {
@@ -19,9 +21,20 @@ class CreateCode extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors){
+            this.setState({errors: nextProps.errors})
+        }
+    }
+
     onSubmit(e){
         e.preventDeault();
-        console.log('submit');
+
+        const codeData = {
+            code: this.state.code
+        }
+
+        this.props.createCode(codeData, this.props.history);
     }
 
     onChange(e) {
@@ -57,8 +70,10 @@ CreateCode.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    code: state.profile,
+    code: state.code,
     errors: state.errors
 })
 
-export default connect(mapStateToProps)(CreateCode)
+export default connect(mapStateToProps, { createCode })(
+    withRouter(CreateCode)
+  );
