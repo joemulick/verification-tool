@@ -28,9 +28,9 @@ class Dashboard extends Component {
         dashboardContent = (
           <div>
             <p className="text-center">Add More Codes</p>
-            {/* <Link to="/create-code" className="btn btn-lg btn-info">
+            <Link to="/create-code" className="btn btn-lg btn-info">
               Code
-            </Link> */}
+            </Link>
           </div>
         );
       }

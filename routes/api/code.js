@@ -9,7 +9,7 @@ const Code = require('../../models/Code');
 const Admin = require('../../models/Admin');
 
 // Load Input Validation
-const ValidateCodeInput = require('../../validation/codeVerify');
+const validateCodeInput = require('../../validation/codeVerify');
 
 router.get('/test', (req, res) => res.json({ msg: 'code route works' }));
 
@@ -21,8 +21,8 @@ router.post('/checkVerify', (req, res) => {
     // const company = req.body.password;
 
     // Find code in database
-    Verify.findOne({code})
-        .then( verify => {
+    Code.findOne({code})
+        .then( code => {
             // Check for code in db
             if(!code) {
                 return res.status(404).json({code: 'This code does not exist, please try again.'})
@@ -31,6 +31,22 @@ router.post('/checkVerify', (req, res) => {
             return 'Code Valid'
         })
 });
+
+// router.post('/code', (req, res) => {
+//   const code = req.body.code;
+//   // const company = req.body.password;
+
+//   // Find code in database
+//   Code.findOne({code})
+//       .then( code => {
+//           // Check for code in db
+//           if(!code) {
+//               return res.status(404).json({code: 'This code does not exist, please try again.'})
+//           } 
+
+//           return 'Code Valid'
+//       })
+// });
 
 // @route   POST api/code
 // @desc    Create code

@@ -19,8 +19,8 @@ export const getCurrentCode = () => dispatch => {
         );
 }
 
-// Create Code
-export const createCode = (codeData, history) => dispatch => {
+// Add Code
+export const addCode = (codeData, history) => dispatch => {
     axios   
         .post('/api/code', codeData)
         .then(res => history.push('/dashboard'))
