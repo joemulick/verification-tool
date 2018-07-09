@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentCode } from '../../actions/codeActions';
+// import { getCurrentCode } from '../../actions/codeActions';
 import Spinner from '../common/Spinner';
 
 class Dashboard extends Component {
-    componentDidMount(){
-        this.props.getCurrentCode();
-    }
+    // componentDidMount(){
+    //     this.props.getCurrentCode();
+    // }
 
 
   render() {
@@ -53,7 +53,7 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  getCurrentCode: PropTypes.func.isRequired,
+  // getCurrentCode: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   code: PropTypes.object.isRequired
 }
@@ -63,4 +63,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, { getCurrentCode }) (Dashboard);
+export default connect(mapStateToProps, {  }) (Dashboard);

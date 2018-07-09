@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE, GET_ERRORS } from './types';
 
 // Get current code
-export const getCurrentCode = () => dispatch => {
+export const codeCheck = () => dispatch => {
     dispatch(setCodeLoading());
     axios.get('/api/code')
         .then(res =>
@@ -38,7 +38,7 @@ export const setCodeLoading = () => {
     }
 }
 
-// claer code
+// clear code
 export const clearCurrentCode = () => {
     return {
         type: CLEAR_CURRENT_CODE
