@@ -60,7 +60,10 @@ class Landing extends Component {
                                 errors={errors.codeCheck}
                                 info="Add A Code With This Input Field"
                             />
+
+                        <input type="submit" className="btn btn-info btn-block mt-4" />    
                         </form>
+                        
                         </div>
                     </div>
                 </div>
