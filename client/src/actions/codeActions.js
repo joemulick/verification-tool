@@ -2,9 +2,10 @@ import axios from 'axios';
 import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE, GET_ERRORS } from './types';
 
 // Get current code
-export const codeCheck = () => dispatch => {
-    dispatch(setCodeLoading());
-    axios.get('/api/code')
+export const codeCheck = codeData => dispatch => {
+
+    axios
+        .get('/api/code/checkVerify', codeData)
         .then(res =>
             dispatch({
                 type: GET_CODE,
@@ -13,9 +14,9 @@ export const codeCheck = () => dispatch => {
         )
         .catch(err =>
             dispatch({
-                type: GET_CODE,
-                payload: {}   
-            })
+            type: GET_ERRORS,
+            payload: err.response.data
+            }) 
         );
 }
 

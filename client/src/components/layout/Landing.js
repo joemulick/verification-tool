@@ -8,13 +8,13 @@ import { codeCheck } from '../../actions/codeActions';
 // import { createCode } from '../../actions/codeActions';
 
 class Landing extends Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
-            displayLandingInputs: false,
-            codeCheck: '',
+            codeInput: '',
             errors: {}
         }
+        
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -28,11 +28,11 @@ class Landing extends Component {
     onSubmit(e){
         e.preventDeault();
 
-        const codeCheck = {
-            codeCheck: this.state.codeCheck
-        }
+        const codeData = {
+            code: this.state.codeInput
+        };
 
-        this.props.createCode(codeCheck, this.props.history);
+        this.props.codeCheck(codeData);
     }
 
     onChange(e) {
@@ -43,7 +43,7 @@ class Landing extends Component {
         const { errors } = this.state;
 
         return (
-            <div className="create-code">
+            <div className="landing">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
@@ -54,11 +54,11 @@ class Landing extends Component {
                         <form onSubmit={this.onSubmit}>
                             <TextFieldGroup
                                 placeholder="Check for Code"
-                                name="codeCheck"
-                                value={this.state.codeCheck}
+                                name="codeInput"
+                                type="codeInput"
+                                value={this.state.codeInput}
                                 onChange={this.onChange}
-                                errors={errors.codeCheck}
-                                info="Add A Code With This Input Field"
+                                error={errors.codeCheck}
                             />
 
                         <input type="submit" className="btn btn-info btn-block mt-4" />    
@@ -73,15 +73,15 @@ class Landing extends Component {
 }
 
 Landing.propTypes = {
-    codeCheck: PropTypes.string.isRequired,
+    codeCheck: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    codeCheck: state.code,
+    codeCheck: state.codeCheck,
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { codeCheck })(
+export default connect(mapStateToProps,{codeCheck})(
     withRouter(Landing)
 );
