@@ -6,12 +6,13 @@ export const codeCheck = codeData => dispatch => {
 
     axios
         .get('/api/code/checkVerify', codeData)
-        .then(res =>
+        .then(res => {
+        
             dispatch({
                 type: GET_CODE,
                 payload: res.data
             })
-        )
+        })
         .catch(err =>
             dispatch({
             type: GET_ERRORS,

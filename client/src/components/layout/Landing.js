@@ -26,7 +26,7 @@ class Landing extends Component {
     }
 
     onSubmit(e){
-        e.preventDeault();
+        e.preventDefault();
 
         const codeData = {
             code: this.state.codeInput

@@ -19,8 +19,8 @@ class Navbar extends Component {
       const authLinks = (
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-              {/* <a href='#' onClick={this.onLogoutClick.bind(this)} */}className="nav-link"><p className="nav-text">Logout</p>
-              {/*</a>*/} 
+              <a href='#' onClick={this.onLogoutClick.bind(this)}className="nav-link"><p className="nav-text">Logout</p>
+              </a> 
           </li>
         </ul>
       )

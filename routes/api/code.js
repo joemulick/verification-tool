@@ -16,26 +16,26 @@ router.get('/test', (req, res) => res.json({ msg: 'code route works' }));
 // @desc    Tests verify route
 // @access  Public
 router.get('/checkVerify', (req, res) => {
-    const { errors, isValid } = validateLoginInput(req.body);
+    // const { errors, isValid } = validateCodeInput(req.body);
 
      // Check Validation
-    if (!isValid) {
-      return res.status(400).json(errors);
-    }
+    // if (!isValid) {
+    //   return res.status(400).json(errors);
+    // }
 
-     const code = req.body.code;
+     const tempCode = req.body.code;
 
     // Find code in database
-    Code.findOne({code})
+    Code.findOne({code: tempCode})
         .then( code => {
             // Check for code in db
             if(!code) {
                 errors.code = 'Code not valid'
                 return res.status(404).json(errors);
             } 
-
             return 'Code Valid'
         })
+        .catch(err => res.status(404).json(err));
 });
 
 // router.post('/code', (req, res) => {
