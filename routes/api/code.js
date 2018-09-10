@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const passport = require('passport');
+// const mongoose = require('mongoose');
+// const passport = require('passport');
 const keys = require('../../config/keys');
 
 // Load Code Validation
@@ -16,6 +16,11 @@ router.get('/test', (req, res) => res.json({ msg: 'code route works' }));
 // @desc    Tests verify route
 // @access  Public
 router.get('/checkVerify', (req, res) => {
+
+    console.log("From inside checkVerify");
+    
+    console.log("req.body " + req.body.code)
+
     // const { errors, isValid } = validateCodeInput(req.body);
 
      // Check Validation
@@ -23,7 +28,8 @@ router.get('/checkVerify', (req, res) => {
     //   return res.status(400).json(errors);
     // }
 
-     const tempCode = req.body.code;
+    const tempCode = req.body.code;
+    console.log("Tempcode = " + tempCode)
 
     // Find code in database
     Code.findOne({code: tempCode})

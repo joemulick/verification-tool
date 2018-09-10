@@ -27,12 +27,12 @@ class Landing extends Component {
 
     onSubmit(e){
         e.preventDefault();
+        console.log("from inside onsubmit! " + this.state.codeInput);
 
-        const codeData = {
-            code: this.state.codeInput
-        };
+        const code = this.state.codeInput
 
-        this.props.codeCheck(codeData);
+
+        this.props.codeCheck(code);
     }
 
     onChange(e) {
@@ -58,7 +58,7 @@ class Landing extends Component {
                                 type="codeInput"
                                 value={this.state.codeInput}
                                 onChange={this.onChange}
-                                error={errors.codeCheck}
+                                error={errors.codeInput}
                             />
 
                         <input type="submit" className="btn btn-info btn-block mt-4" />    
@@ -82,6 +82,6 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps,{codeCheck})(
-    withRouter(Landing)
-);
+export default connect(mapStateToProps,{codeCheck})(Landing);
+
+// export default connect(mapStateToProps, {loginUser})(Login);

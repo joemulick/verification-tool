@@ -7,7 +7,6 @@ export const codeCheck = codeData => dispatch => {
     axios
         .get('/api/code/checkVerify', codeData)
         .then(res => {
-        
             dispatch({
                 type: GET_CODE,
                 payload: res.data
@@ -22,16 +21,16 @@ export const codeCheck = codeData => dispatch => {
 }
 
 // Add Code
-export const addCode = (codeData, history) => dispatch => {
-    axios   
-        .post('/api/code', codeData)
-        .then(res => history.push('/dashboard'))
-        .catch(err =>
-        dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        }))
-}
+// export const addCode = (codeData, history) => dispatch => {
+//     axios   
+//         .post('/api/code', codeData)
+//         .then(res => history.push('/dashboard'))
+//         .catch(err =>
+//         dispatch({
+//             type: GET_ERRORS,
+//             payload: err.response.data
+//         }))
+// }
 
 // code Loading
 export const setCodeLoading = () => {
