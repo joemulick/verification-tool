@@ -5,7 +5,7 @@ const router = express.Router();
 const keys = require('../../config/keys');
 
 // Load Code Validation
-const validateCodeInput = require('../../validation/codeVerify');
+// const validateCodeInput = require('../../validation/codeVerify');
 
 // Code model
 const Code = require('../../models/Code');
@@ -16,10 +16,16 @@ router.get('/test', (req, res) => res.json({ msg: 'code route works' }));
 // @desc    Tests verify route
 // @access  Public
 router.get('/checkVerify', (req, res) => {
+    // const { errors, isValid } = validateCodeInput(req.body);
+
+      // Check Validation
+//   if (!isValid) {
+//     return res.status(400).json(errors);
+//   }
 
     console.log("From inside checkVerify");
     
-    console.log("req.body " + req.body.code)
+    console.log("req.body " + req.body.codeInput)
 
     // const { errors, isValid } = validateCodeInput(req.body);
 
@@ -28,7 +34,7 @@ router.get('/checkVerify', (req, res) => {
     //   return res.status(400).json(errors);
     // }
 
-    const tempCode = req.body.code;
+    const tempCode = req.body.codeInput;
     console.log("Tempcode = " + tempCode)
 
     // Find code in database

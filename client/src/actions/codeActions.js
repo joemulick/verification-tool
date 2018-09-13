@@ -6,6 +6,7 @@ export const codeCheck = codeObject => dispatch => {
 
     axios
         .get('/api/code/checkVerify', codeObject)
+        // console.log('inside axios codeActions server or client?')
         .then(res => {
             dispatch({
                 type: GET_CODE,
