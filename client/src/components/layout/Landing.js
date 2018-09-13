@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 // import { Link } from 'react-router-dom';
-import { codeCheck } from '../../actions/codeActions';
+import {codeCheck} from '../../actions/codeActions';
 // import { createCode } from '../../actions/codeActions';
 
 class Landing extends Component {
@@ -27,12 +27,23 @@ class Landing extends Component {
 
     onSubmit(e){
         e.preventDefault();
-        console.log("from inside onsubmit! " + this.state.codeInput);
+    
+        const codeObject = {
+            code: this.state.codeInput
+        }
 
-        const code = this.state.codeInput
+        this.props.codeCheck(codeObject.code);
+
+        console.log("from inside onsubmit! " + codeObject.code);
+
+        // const userData = {
+        //   email: this.state.email,
+        //   password: this.state.password
+        // };
+    
+        // this.props.loginUser(userData);
 
 
-        this.props.codeCheck(code);
     }
 
     onChange(e) {
@@ -78,7 +89,7 @@ Landing.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    codeCheck: state.codeCheck,
+    codeCheck: state.codeObject,
     errors: state.errors
 });
 
