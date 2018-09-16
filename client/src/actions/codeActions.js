@@ -5,8 +5,7 @@ import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE, GET_ERRORS } from './types'
 export const codeCheck = codeObject => dispatch => {
 
     axios
-        .get('/api/code/checkVerify', codeObject)
-        // console.log('inside axios codeActions server or client?')
+        .post('/api/code/checkVerify', codeObject)
         .then(res => {
             dispatch({
                 type: GET_CODE,

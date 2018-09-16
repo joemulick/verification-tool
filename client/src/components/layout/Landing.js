@@ -29,12 +29,10 @@ class Landing extends Component {
         e.preventDefault();
     
         const codeObject = {
-         code: this.state.codeInput
+            code: this.state.codeInput
         }
 
         this.props.codeCheck(codeObject);
-
-        console.log("from inside onsubmit! " + codeObject);
 
         // const userData = {
         //   email: this.state.email,

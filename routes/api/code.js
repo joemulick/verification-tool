@@ -3,6 +3,7 @@ const router = express.Router();
 // const mongoose = require('mongoose');
 // const passport = require('passport');
 const keys = require('../../config/keys');
+var bodyParser = require('body-parser');
 
 // Load Code Validation
 // const validateCodeInput = require('../../validation/codeVerify');
@@ -15,7 +16,7 @@ router.get('/test', (req, res) => res.json({ msg: 'code route works' }));
 // @route   GET api/verify/checkVerify
 // @desc    Tests verify route
 // @access  Public
-router.get('/checkVerify', (req, res) => {
+router.post('/checkVerify', (req, res) => {
     // const { errors, isValid } = validateCodeInput(req.body);
 
       // Check Validation
@@ -23,9 +24,7 @@ router.get('/checkVerify', (req, res) => {
 //     return res.status(400).json(errors);
 //   }
 
-    console.log("From inside checkVerify");
-    
-    console.log("req.body " + req.body.codeInput)
+    console.log("req.body: " + req.body.code);
 
     // const { errors, isValid } = validateCodeInput(req.body);
 
@@ -34,7 +33,7 @@ router.get('/checkVerify', (req, res) => {
     //   return res.status(400).json(errors);
     // }
 
-    const tempCode = req.body.codeInput;
+    const tempCode = req.body.code;
     console.log("Tempcode = " + tempCode)
 
     // Find code in database
