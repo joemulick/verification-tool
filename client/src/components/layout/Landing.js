@@ -92,5 +92,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps,{codeCheck})(Landing);
-
-// export default connect(mapStateToProps, {loginUser})(Login);
