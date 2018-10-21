@@ -6,11 +6,7 @@ const CodeSchema = new Schema({
     code: {
         type: String,
         required: true
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    }    
+    }
 });
 
-module.exports = Code = mongoose.model('code', CodeSchema);
+module.exports = Code = mongoose.model('codes', CodeSchema);

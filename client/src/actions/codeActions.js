@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_CODE, CODE_LOADING, CLEAR_CURRENT_CODE, GET_ERRORS } from './types';
 
-// Get current code
+// Post current code
 export const codeCheck = codeObject => dispatch => {
 
     axios
