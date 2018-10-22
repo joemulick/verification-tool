@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 // const mongoose = require('mongoose');
 // const passport = require('passport');
-const keys = require('../../config/keys');222
+const keys = require('../../config/keys');
 
 // Load Code Validation
 // const validateCodeInput = require('../../validation/codeVerify');
