@@ -21,24 +21,35 @@ router.post('/checkVerify', (req, res) => {
     const tempCode = req.body.code;
     console.log("Tempcode = " + tempCode);
 
-    // const {errors, isValid} = validateCodeInput(req.body.code);
+    const {errors, isValid} = validateCodeInput(req.body);
 
-    // if (!isValid) {
-    //     return res.status(404).json(errors.code);
-    // }
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+
+    
 
 
     // Find code in database
+    // swapping between findOne and find switches if else statement outcome
     Code.findOne({tempCode}).then(code => {
 
             // Check for code in db
             if(!code) {
+
+                console.log('from in if(!code) aka code notvalid\n code: ' + code + ' + tempCode: ' + tempCode);
+
                 errors.code = 'Code Is Not Valid';
-                return res.status(404).json(errors);
+
+                console.log('errors.code: ' + errors.code);
+
+                return res.status(400).json(errors);
                 // return 'Code is not Valid'
             } else {
+                console.log('from in else statement aka code valid\n code: ' + code + ' + tempCode: ' + tempCode);
                 errors.code = 'Code Valid';
-                return res.status(404).json(errors);
+                return res.status(400).json(errors);
                 // return 'Code is Valid'
             }
 

@@ -67,7 +67,7 @@ class Landing extends Component {
                                 type="codeInput"
                                 value={this.state.codeInput}
                                 onChange={this.onChange}
-                                error={errors.codeInput}
+                                error={errors.code}
                             />
 
                         <input type="submit" className="btn btn-info btn-block mt-4" />    
